@@ -1,10 +1,13 @@
 .Item{
     max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
 
 }
 .Item p{
     margin:6px 0px;
-
+   
 }
 .Item img{
 

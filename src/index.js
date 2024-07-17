@@ -5,13 +5,21 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import "bootstrap/dist/css/bootstrap.min.css"
 import { BrowserRouter } from 'react-router-dom'
+import ShopContextProvider from './context/ShopContext';
+import "./css/all.min.css"
+import CartContextProvider from './context/CartContext';
+import { Toaster } from 'react-hot-toast';
 // import "bootstrap/scss/forms/"
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
   <BrowserRouter>
-    <App />
-
+    <ShopContextProvider>
+      <CartContextProvider>
+        <App />
+      </CartContextProvider>
+    </ShopContextProvider>
+    <Toaster />
   </BrowserRouter>
 
 );
