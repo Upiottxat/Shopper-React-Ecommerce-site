@@ -1,7 +1,26 @@
 import React, { useState } from 'react';
+import useLoginSignup from '../hooks/useLoginSignup';
 
 const LoginSignup = () => {
     const [LoginSignup, setLoginSignup] = useState("Login");
+    const { register } = useLoginSignup()
+    const [registerFormData, setregisterFormData] = useState({
+        fullName: "",
+        email: "",
+        password: "",
+        confromPassword: "",
+
+    });
+
+    const handleRegisterForm = (e) => {
+        const { name, value } = e.target;
+        setregisterFormData(prev => ({ ...prev, [name]: value }));
+    };
+    const registerUser = async (e) => {
+
+        e.preventDefault()
+        await register(registerFormData)
+    }
     return (
         <div style={{
             display: 'flex',
@@ -53,8 +72,8 @@ const LoginSignup = () => {
                                 <p className="text-center">or:</p>
 
                                 <div data-mdb-input-init className="form-outline mb-4">
-                                    <label className="form-label" htmlFor="loginName">Email or username</label>
-                                    <input type="email" id="loginName" className="form-control" placeholder='Email or username' />
+                                    <label className="form-label" htmlFor="loginName">Email</label>
+                                    <input type="email" id="loginName" className="form-control" placeholder='Email ' />
 
                                 </div>
 
@@ -85,7 +104,7 @@ const LoginSignup = () => {
                             </form>
                         </div>
                             : <div className="tab-content" id="-register" role="tabpanel" aria-labelledby="tab-register">
-                                <form>
+                                <form onSubmit={registerUser}>
                                     <div className="text-center mb-3">
                                         <p>Sign up with:</p>
                                         <button type="button" data-mdb-button-init data-mdb-ripple-init className="btn  btn-floating mx-1 ">
@@ -109,31 +128,27 @@ const LoginSignup = () => {
 
                                     <div data-mdb-input-init className="form-outline mb-4">
                                         <label className="form-label" htmlFor="registerName">Name</label>
-                                        <input type="text" id="registerName" className="form-control" />
+                                        <input type="text" value={registerFormData.fullName} onChange={handleRegisterForm} name='fullName' id="registerName" className="form-control" />
 
                                     </div>
 
-                                    <div data-mdb-input-init className="form-outline mb-4">
-                                        <label className="form-label" htmlFor="registerUsername">Username</label>
-                                        <input type="text" id="registerUsername" className="form-control" />
 
-                                    </div>
 
                                     <div data-mdb-input-init className="form-outline mb-4">
                                         <label className="form-label" htmlFor="registerEmail">Email</label>
-                                        <input type="email" id="registerEmail" className="form-control" />
+                                        <input type="email" value={registerFormData.email} onChange={handleRegisterForm} name='email' id="registerEmail" className="form-control" />
 
                                     </div>
 
                                     <div data-mdb-input-init className="form-outline mb-4">
                                         <label className="form-label" htmlFor="registerPassword">Password</label>
-                                        <input type="password" id="registerPassword" className="form-control" />
+                                        <input type="password" value={registerFormData.password} onChange={handleRegisterForm} name='password' id="registerPassword" className="form-control" />
 
                                     </div>
 
                                     <div data-mdb-input-init className="form-outline mb-4">
                                         <label className="form-label" htmlFor="registerRepeatPassword">Repeat password</label>
-                                        <input type="password" id="registerRepeatPassword" className="form-control" />
+                                        <input type="password" value={registerFormData.confromPassword} onChange={handleRegisterForm} name='confromPassword' id="registerRepeatPassword" className="form-control" />
 
                                     </div>
 
