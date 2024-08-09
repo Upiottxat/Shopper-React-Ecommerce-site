@@ -12,7 +12,7 @@ const Offers = () => {
                 <button>Check Now</button>
             </div>
             <div children='offers-right'>
-                <img src={exclusive_image}></img>
+                <img src={exclusive_image} width={window.innerWidth / 2}></img>
             </div>
         </div>
     )

@@ -1,128 +1,173 @@
-.ProductDisplay{
+.ProductDisplay {
     display: flex;
-    margin:0px 20px;
-    
+    margin: 0px 20px;
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
 }
-.ProductDisplayLeft{
-    display: flex;
-    gap:17px;
 
-}
-.ProductDisplay_ImageList{
+.ProductDisplayLeft {
     display: flex;
-    flex-direction: column;
+    gap: 17px;
+    flex-direction: column; /* Stack images vertically on smaller screens */
+    align-items: center;
+    width: 100%; /* Ensure it takes full width on smaller screens */
+}
+
+.ProductDisplay_ImageList {
+    display: flex;
+    flex-direction: row;
     gap: 16px;
-}
-.ProductDisplay_ImageList img{
-    height:163px;
-
-}
-.ProductDispay_mainImg{
-    width: 586px;
-height: 700px;
+    overflow-x: scroll; /* Allow horizontal scrolling for smaller screens */
 }
 
-.ProductDisplayRight{
-    margin:0 70px;
+.ProductDisplay_ImageList img {
+    height: 150px;
+    object-fit: cover;
+}
+
+.ProductDispay_mainImg {
+    width: 100%;
+    max-width: 586px;
+    height: auto;
+}
+
+.ProductDisplayRight {
+    margin: 0 20px;
     display: flex;
     flex-direction: column;
-
+    width: 100%; /* Ensure it takes full width on smaller screens */
 }
-.ProductDisplayRight h1{
-    color:#3d3d3d;
-    font-size:  40px;
+
+.ProductDisplayRight h1 {
+    color: #3d3d3d;
+    font-size: 32px;
     font-weight: 700;
-
 }
-.ProductDispay_rightStart{
+
+.ProductDispay_rightStart {
     display: flex;
     align-items: center;
     margin-top: 13px;
-    font-size: 16px;
-
+    font-size: 14px;
 }
-.ProductDispay_rightPrices{
+
+.ProductDispay_rightPrices {
     display: flex;
-    margin:40px 0px;
-    gap:30px;
-    font-size: 24px;
+    margin: 20px 0px;
+    gap: 20px;
+    font-size: 20px;
     font-weight: 700;
-
 }
-.old_price{
-    color: #818181 ;
+
+.old_price {
+    color: #818181;
     text-decoration: line-through;
 }
-.new_price{
-    color: #ff4141;
 
+.new_price {
+    color: #ff4141;
 }
 
-.Size h1{
-    margin-top: 55px;
+.Size h1 {
+    margin-top: 30px;
     color: #656565;
-    font-size:  20px;
+    font-size: 18px;
     font-weight: 600;
 }
-.Sizes{
-display: flex;
-margin:30px 0px ;
-gap:20px;
 
+.Sizes {
+    display: flex;
+    margin: 20px 0px;
+    gap: 10px;
 }
-.Sizes div{
-    padding:18px 24px ;
-   
-    border :1px solid #ebebeb;
+
+.Sizes div {
+    padding: 12px 18px;
+    border: 1px solid #ebebeb;
     border-radius: 3px;
     cursor: pointer;
 }
 
-.addToCart{
-    padding:20px 40px;
-    width: 200px;
+.addToCart {
+    padding: 15px 30px;
+    width: 100%; /* Make the button full width on smaller screens */
     font-size: 16px;
     font-weight: 600;
     color: white;
     background: #ff4141;
     margin-bottom: 40px;
-    border:none;
+    border: none;
     outline: none;
     cursor: pointer;
-
-}
-
-.category{
-    margin-top: 10px;
-
-}
-.category span{
-    font-weight: 600;
 }
 
 .Quanity h1 {
-    margin-top: 55px;
+    margin-top: 30px;
     color: #656565;
-    font-size:  20px;
+    font-size: 18px;
     font-weight: 600;
 }
-.Quanity div{
-    display: flex;
-margin:20px 0px ;
-gap:5px;
-}
-.Quanity div button{
-padding:0.6rem 1.2rem;
-outline: none;
-border:1px solid #656565    ;
-background: gold;
-border-radius:11px;
 
+.Quanity div {
+    display: flex;
+    margin: 20px 0px;
+    gap: 5px;
 }
-.Quanity div input{
-    width: 100px;
+
+.Quanity div button {
+    padding: 0.6rem 1.2rem;
     outline: none;
-   border-radius: 11px;
-   border:1px solid #818181;
-   text-align: center;
+    border: 1px solid #656565;
+    background: gold;
+    border-radius: 11px;
+}
+
+.Quanity div input {
+    width: 80px;
+    outline: none;
+    border-radius: 11px;
+    border: 1px solid #818181;
+    text-align: center;
+}
+
+/* Media queries for smaller screens */
+@media (max-width: 768px) {
+    .ProductDisplayRight h1 {
+        font-size: 28px; /* Reduce font size on smaller screens */
+    }
+
+    .ProductDispay_mainImg {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .ProductDisplay {
+        flex-direction: column; /* Stack columns on top of each other */
+        align-items: center;
+    }
+
+    .ProductDisplayLeft {
+        align-items: center;
+    }
+
+    .ProductDisplayRight {
+        margin: 0; /* Remove margin on smaller screens */
+        text-align: center;
+    }
+
+    .ProductDispay_rightPrices {
+        flex-direction: column; /* Stack prices vertically on smaller screens */
+        align-items: center;
+    }
+
+    .Sizes {
+        justify-content: center; /* Center sizes on smaller screens */
+    }
+    .ProductDisplay_ImageList{
+        width: 99%;
+    }
+    .addToCart {
+        width: 100%; /* Make the button full width on smaller screens */
+    }
+ 
 }

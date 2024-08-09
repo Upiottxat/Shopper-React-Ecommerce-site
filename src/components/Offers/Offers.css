@@ -1,49 +1,113 @@
-.Offers{
-    width: 65%;
-    height: 60vh;
+.Offers {
+    width: 90%; /* Adjusted width to be more flexible */
+    height: auto; /* Make height auto for better responsiveness */
     display: flex;
+    flex-direction: row;
     margin: auto;
-    padding: 0px 140px;
-    margin-bottom: 200px;
-    background: linear-gradient(180deg, #fde1ff,#e1ffea22 60%);
-gap: 30px   ;
+    padding: 20px;
+    margin-bottom: 100px;
+    background: linear-gradient(180deg, #fde1ff, #e1ffea22 60%);
+    gap: 30px;
+    border-radius: 10px; /* Added border radius for a smoother look */
+    box-sizing: border-box; /* Ensures padding is included in width */
 }
-.offers-left{
-    flex:1;
+
+.offers-left {
+    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    text-align: center; /* Center align text on smaller screens */
+    padding: 20px; /* Add some padding for better spacing */
 }
 
-.offers-left h1{
-    color:#171717;
-    font-size: 60px ;
+.offers-left h1 {
+    color: #171717;
+    font-size: 50px; /* Reduced font size */
     font-weight: 600;
+    margin-bottom: 10px;
+}
 
-}
-.offers-left p{
-    color:#171717;
-    font-size: 22px;
+.offers-left p {
+    color: #171717;
+    font-size: 20px; /* Adjusted font size */
     font-weight: 600;
+    margin-bottom: 20px;
 }
-.offers-left button{
-    width: 282px;
-    height: 80px;
-    border-radius: 35px;
+
+.offers-left button {
+    width: 200px; /* Adjusted button size */
+    height: 50px; /* Adjusted button height */
+    border-radius: 25px; /* Rounded corners */
     background: #ff4141;
     border: none;
     color: wheat;
-    font-style: 22px;
+    font-size: 18px; /* Adjusted font size */
     font-weight: 500;
-    margin-top: 30px;
+    margin-top: 20px;
     cursor: pointer;
+    align-self: center; /* Center the button */
 }
-.offers-right{
-    flex:1;
+
+.offers-right {
+    flex: 1;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    padding-top: 50px;
+    justify-content: center; /* Center the image */
+    padding: 20px; /* Add some padding */
+}
 
+.offers-right img {
+    max-width: 50%; /* Make image responsive */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px; /* Added border radius for consistency */
+    width: 105px;
 
+}
+
+/* Media Queries for Responsive Design */
+
+@media (max-width< 768px) {
+    .Offers {
+        flex-direction: column; /* Stack items vertically */
+        height: auto; /* Adjust height for vertical layout */
+        padding: 20px 10px; /* Reduce padding on smaller screens */
+    }
+
+    .offers-left h1 {
+        font-size: 40px; /* Reduce font size on tablets */
+    }
+
+    .offers-left p {
+        font-size: 18px; /* Adjust paragraph font size */
+    }
+
+    .offers-left button {
+        width: 180px; /* Adjust button size */
+        height: 45px;
+        font-size: 16px; /* Reduce font size */
+    }
+   
+}
+
+@media (max-width: 480px) {
+    .Offers {
+        flex-direction: column;
+        height: auto;
+        padding: 10px; /* Further reduce padding on mobile */
+    }
+
+    .offers-left h1 {
+        font-size: 30px; /* Further reduce font size on mobile */
+    }
+
+    .offers-left p {
+        font-size: 16px; /* Reduce paragraph font size */
+    }
+
+    .offers-left button {
+        width: 160px; /* Adjust button size */
+        height: 40px;
+        font-size: 14px; /* Reduce font size */
+    }
 }

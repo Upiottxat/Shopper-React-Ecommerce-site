@@ -1,27 +1,31 @@
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import axios from 'axios';
+import { useAuthContext } from '../context/AuthContext';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const useLoginSignup = () => {
 
     const [loading, setLoading] = useState(false);
+    const { authUser, setAuthUser } = useAuthContext();
+    const navigate = useNavigate()
     console.log("eheh");
     const register = async (userDetails) => {
-        const { fullName, email, password, confromPassword } = userDetails;
+        const { fullName, email, password, confirmPassword } = userDetails;
 
-        if (!fullName || !email || !password || !confromPassword) {
-            console.log(fullName, email, password, confromPassword);
+        if (!fullName || !email || !password || !confirmPassword) {
+            console.log(fullName, email, password, confirmPassword);
             return toast.error("All fields are required");
         }
 
-        if (password !== confromPassword) {
+        if (password !== confirmPassword) {
             return toast.error("Passwords do not match");
         }
 
         setLoading(true);
 
         try {
-            const res = await axios.post("/api/auth/register", { fullName, email, password }, {
+            const res = await axios.post("/api/auth/register", { fullName, email, password, confirmPassword }, {
                 headers: {
                     "Content-Type": "application/json"
                 }
@@ -36,6 +40,9 @@ const useLoginSignup = () => {
             toast.success("Registration successful!");
 
             localStorage.setItem("auth", JSON.stringify(data));
+            setAuthUser(data);
+            navigate("/")
+
         } catch (error) {
             if (error.response?.data) {
                 if (error.response.data.error) {
@@ -77,6 +84,8 @@ const useLoginSignup = () => {
             toast.success("Login successful!");
 
             localStorage.setItem("auth", JSON.stringify(data));
+            setAuthUser(data);
+            navigate("/")
         } catch (error) {
             if (error.response?.data) {
                 if (error.response.data.error) {

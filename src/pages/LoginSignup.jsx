@@ -3,14 +3,16 @@ import useLoginSignup from '../hooks/useLoginSignup';
 
 const LoginSignup = () => {
     const [LoginSignup, setLoginSignup] = useState("Login");
-    const { register } = useLoginSignup()
+    const { register, login, loading } = useLoginSignup()
     const [registerFormData, setregisterFormData] = useState({
         fullName: "",
         email: "",
         password: "",
-        confromPassword: "",
+        confirmPassword: "",
 
     });
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
     const handleRegisterForm = (e) => {
         const { name, value } = e.target;
@@ -20,6 +22,13 @@ const LoginSignup = () => {
 
         e.preventDefault()
         await register(registerFormData)
+    }
+
+
+
+    const handleLogin = async (e) => {
+        e.preventDefault()
+        await login({ email, password })
     }
     return (
         <div style={{
@@ -49,7 +58,7 @@ const LoginSignup = () => {
                 <div className="tab-content">
                     {
                         LoginSignup === "Login" ? <div className="tab-pane fade show active" id="-login" role="tabpanel" aria-labelledby="tab-login">
-                            <form>
+                            <form onSubmit={handleLogin}>
                                 <div className="text-center mb-3 ">
                                     <p>Sign in with:</p>
                                     <button type="button " data-mdb-button-init data-mdb-ripple-init className="btn btn-link btn-floating mx-1">
@@ -73,13 +82,17 @@ const LoginSignup = () => {
 
                                 <div data-mdb-input-init className="form-outline mb-4">
                                     <label className="form-label" htmlFor="loginName">Email</label>
-                                    <input type="email" id="loginName" className="form-control" placeholder='Email ' />
+                                    <input type="email" id="loginName" className="form-control" placeholder='Email ' value={email} onChange={(e) => {
+                                        setEmail(e.target.value);
+                                    }} />
 
                                 </div>
 
                                 <div data-mdb-input-init className="form-outline mb-4">
                                     <label className="form-label" htmlFor="loginPassword">Password</label>
-                                    <input type="password" id="loginPassword" className="form-control" placeholder='Password' />
+                                    <input type="password" id="loginPassword" className="form-control" placeholder='Password' value={password} onChange={(e) => {
+                                        setPassword(e.target.value)
+                                    }} />
 
                                 </div>
 
@@ -96,7 +109,10 @@ const LoginSignup = () => {
                                     </div>
                                 </div>
 
-                                <button type="submit" data-mdb-button-init data-mdb-ripple-init className="btn btn-danger btn-block mb-4">Sign in</button>
+                                <button type="submit" data-mdb-button-init data-mdb-ripple-init className="btn btn-danger btn-block mb-4">
+                                    {loading ? <React.Fragment> <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Loading...</span></React.Fragment> : <React.Fragment></React.Fragment>}
+                                    Sign in</button>
 
                                 <div className="text-center">
                                     <p>Not a member? <a href="#!">Register</a></p>
@@ -148,7 +164,7 @@ const LoginSignup = () => {
 
                                     <div data-mdb-input-init className="form-outline mb-4">
                                         <label className="form-label" htmlFor="registerRepeatPassword">Repeat password</label>
-                                        <input type="password" value={registerFormData.confromPassword} onChange={handleRegisterForm} name='confromPassword' id="registerRepeatPassword" className="form-control" />
+                                        <input type="password" value={registerFormData.confirmPassword} onChange={handleRegisterForm} name='confirmPassword' id="registerRepeatPassword" className="form-control" />
 
                                     </div>
 
@@ -160,7 +176,10 @@ const LoginSignup = () => {
                                         </label>
                                     </div>
 
-                                    <button type="submit" data-mdb-button-init data-mdb-ripple-init className="btn btn-danger btn-block mb-3">Sign in</button>
+                                    <button type="submit" data-mdb-button-init data-mdb-ripple-init className="btn btn-danger btn-block mb-3">
+                                        {loading ? <React.Fragment> <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Loading...</span></React.Fragment> : <React.Fragment></React.Fragment>}
+                                        Register </button>
                                 </form>
                             </div>
                     }

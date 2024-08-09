@@ -9,16 +9,20 @@ import ShopContextProvider from './context/ShopContext';
 import "./css/all.min.css"
 import CartContextProvider from './context/CartContext';
 import { Toaster } from 'react-hot-toast';
+import { AuthContextProvider } from './context/AuthContext';
 // import "bootstrap/scss/forms/"
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
   <BrowserRouter>
-    <ShopContextProvider>
-      <CartContextProvider>
-        <App />
-      </CartContextProvider>
-    </ShopContextProvider>
+    <AuthContextProvider>
+      <ShopContextProvider>
+        <CartContextProvider>
+          <App />
+        </CartContextProvider>
+      </ShopContextProvider>
+
+    </AuthContextProvider>
     <Toaster />
   </BrowserRouter>
 
