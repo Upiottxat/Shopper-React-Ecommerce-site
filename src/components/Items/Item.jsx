@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import "./item.css"
 import { Link } from 'react-router-dom'
-const Item = () => {
+const Item = props => {
     return (
         <div className='Item' key={props.key}>
             <Link to={`/product/${props.id}`}><img src={props.image}></img></Link>
