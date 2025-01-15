@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import useCart from '../../hooks/useCart';
 
 const CartItem = ({ imgSrc, imgAlt, productName, productDescription, price, Quantity, id, new_price }) => {
