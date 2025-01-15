@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 import CartItem from '../components/CartItem/CartItem';
 import { useCartContext } from '../context/CartContext';
 import "./css/Cart.css";
-import useCart from '../hooks/useCart';
-
 const Cart = () => {
     const { cartData } = useCartContext();
     const [totalPrice, setTotalPrice] = useState(0);
