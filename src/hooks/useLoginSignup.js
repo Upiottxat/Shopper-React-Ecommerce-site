@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import toast from 'react-hot-toast';
 import axios from 'axios';
-import { useAuthContext } from '../context/AuthContext';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const useLoginSignup = () => {
 
     const [loading, setLoading] = useState(false);
-    const { authUser, setAuthUser } = useAuthContext();
+    
     const navigate = useNavigate()
     console.log("eheh");
     const register = async (userDetails) => {
