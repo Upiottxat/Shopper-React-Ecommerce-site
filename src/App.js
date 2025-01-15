@@ -10,7 +10,7 @@ import Footer from './components/Footer/Footer'
 import men_banner from "./components/Assets/banner_mens.png";
 import women_banner from "./components/Assets/banner_women.png"
 import kis_banner from "./components/Assets/banner_kids.png"
-import toast from 'react-hot-toast'
+
 const App = () => {
 
   return (
