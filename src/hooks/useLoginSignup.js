@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 const useLoginSignup = () => {
 
     const [loading, setLoading] = useState(false);
-    
+    const setAuthUser=null;
     const navigate = useNavigate()
     console.log("eheh");
     const register = async (userDetails) => {
